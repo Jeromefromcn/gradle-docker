@@ -12,5 +12,6 @@ RUN wget https://services.gradle.org/distributions/gradle-2.6-bin.zip && \
 ENV GRADLE_HOME /usr/bin/gradle
 ENV PATH $PATH:$GRADLE_HOME/bin
 
+ADD assets/ /app/
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
