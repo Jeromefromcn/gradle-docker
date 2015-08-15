@@ -1,14 +1,16 @@
-FROM sameersbn/gitlab-ci-runner:latest
+FROM jeromefromcn/java-docker-runner-gitlab:JDK-8
 MAINTAINER Jerome Jiang "jeromefromcn@gmail.com"
 
-RUN apt-get update && \
-    sudo apt-get install -y software-properties-common && \
-    sudo add-apt-repository -y ppa:webupd8team/java && \
-    apt-get update && \
-    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections && \
-    sudo apt-get install -y oracle-java8-installer && \
-    rm -rf /var/lib/apt/lists/* # 20150613
+# Gradle
+WORKDIR /usr/bin
+RUN wget https://services.gradle.org/distributions/gradle-2.6-bin.zip && \
+    unzip gradle-2.6-bin.zip && \
+    ln -s gradle-2.6 gradle && \
+    rm gradle-2.6-bin.zip
 
-ADD assets/ /app/
+# Set Appropriate Environmental Variables
+ENV GRADLE_HOME /usr/bin/gradle
+ENV PATH $PATH:$GRADLE_HOME/bin
+
 RUN chmod 755 /app/setup/install
 RUN /app/setup/install
