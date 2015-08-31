@@ -1,4 +1,4 @@
-FROM jeromefromcn/java-docker-runner-gitlab:JDK-8
+FROM java:8-jdk
 MAINTAINER Jerome Jiang "jeromefromcn@gmail.com"
 
 # Gradle
