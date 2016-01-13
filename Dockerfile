@@ -3,10 +3,10 @@ MAINTAINER Jerome Jiang "jeromefromcn@gmail.com"
 
 # Gradle
 WORKDIR /usr/bin
-RUN wget https://services.gradle.org/distributions/gradle-2.6-bin.zip && \
-    unzip gradle-2.6-bin.zip && \
-    ln -s gradle-2.6 gradle && \
-    rm gradle-2.6-bin.zip
+RUN wget https://services.gradle.org/distributions/gradle-2.10-bin.zip && \
+    unzip gradle-2.10-bin.zip && \
+    ln -s gradle-2.10 gradle && \
+    rm gradle-2.10-bin.zip
 
 # Set Appropriate Environmental Variables
 ENV GRADLE_HOME /usr/bin/gradle
